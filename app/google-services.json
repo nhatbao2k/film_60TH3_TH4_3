@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "986950718102",
+    "project_id": "appfilm-b6b73",
+    "storage_bucket": "appfilm-b6b73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986950718102:android:cbb5f9a1255dd9654968b7",
+        "android_client_info": {
+          "package_name": "com.congnghephanmem.filmhay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986950718102-ko9usspoqssde69ojdgbernq34b87oca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUYZh9nYdVOsKVT_otbdhYaQhfzTCmrVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986950718102-ko9usspoqssde69ojdgbernq34b87oca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.home"
+    android:id="@+id/home"
+    android:background="#1D1A26">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1"
+            android:shrinkColumns="0">
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trang chủ"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFF"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Danh mục"
+                    android:textSize="15sp"
+                    android:textColor="#FFF"/>
+            </TableRow>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recyler_danh_muc"/>
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/img_sale"
+                android:src="@drawable/phimhot"
+                android:scaleType="centerCrop"/>
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/imgSlide"
+                app:auto_cycle="true"
+                app:delay="0"
+                app:period="3000"/>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anime hot"
+                    android:textSize="15sp"
+                    android:textColor="#FFF"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tất cả"
+                    android:textSize="15sp"
+                    android:textColor="#FFB5C5"
+                    android:layout_column="2"/>
+            </TableRow>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyler_anime_hot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ani"
+                    android:textSize="15sp"
+                    android:textColor="#FFF"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tất cả"
+                    android:textSize="15sp"
+                    android:textColor="#FFB5C5"
+                    android:layout_column="2"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+</FrameLayout>

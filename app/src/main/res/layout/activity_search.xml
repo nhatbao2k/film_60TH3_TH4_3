@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back1"
+
+    tools:context=".Search.Search">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:textColor="@color/white"
+        android:background="@drawable/edittexxt"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:hint="Nhập từ khóa"
+        android:id="@+id/search_text">
+
+    </EditText>
+    <ListView
+        android:id="@+id/list_item_search"
+        android:layout_below="@+id/search_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</RelativeLayout>

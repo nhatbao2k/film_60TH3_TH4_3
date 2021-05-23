@@ -1,17 +1,13 @@
 package com.congnghephanmem.filmhay.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.congnghephanmem.filmhay.Adapter.RecyclerAnimeAdapter;
 import com.congnghephanmem.filmhay.Adapter.RecyclerDanhMucAdapter;
@@ -21,8 +17,6 @@ import com.congnghephanmem.filmhay.Model.DanhMuc;
 import com.congnghephanmem.filmhay.R;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -210,35 +204,4 @@ public class home extends Fragment {
 
         return danhMuc;
     }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.d("TAG", "onStart");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("TAG", "onResume");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d("TAG", "onPause");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d("TAG", "onStop");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d("TAG", "onDestroy");
-    }
-
 }

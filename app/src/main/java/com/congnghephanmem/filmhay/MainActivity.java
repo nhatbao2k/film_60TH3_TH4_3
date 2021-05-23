@@ -3,27 +3,19 @@ package com.congnghephanmem.filmhay;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.congnghephanmem.filmhay.Search.Search;
-import com.congnghephanmem.filmhay.fragment.film_doc_quyen;
+import com.congnghephanmem.filmhay.fragment.lich_su;
 import com.congnghephanmem.filmhay.fragment.home;
 import com.congnghephanmem.filmhay.fragment.profile;
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new home();
                     break;
                 case R.id.copyright:
-                    selectedFragment = new film_doc_quyen();
+                    selectedFragment = new lich_su();
                     break;
                 case R.id.profile:
                     selectedFragment = new profile();

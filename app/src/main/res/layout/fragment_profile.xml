@@ -35,7 +35,7 @@
                        android:layout_gravity="top"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:text=":))"
+                       android:text="@string/hello"
                        android:textColor="#fff"
                        android:textStyle="bold"
                        android:textSize="20sp"

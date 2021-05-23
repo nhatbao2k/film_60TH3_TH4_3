@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_action_home"/>
     <item
         android:id="@+id/copyright"
-        android:title="Copyright"
+        android:title="History watch"
         android:icon="@drawable/ic_action_play"/>
     <item
         android:id="@+id/profile"

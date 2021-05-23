@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/film_doc_quyen"
-        android:name="com.congnghephanmem.filmhay.fragment.film_doc_quyen"
+        android:name="com.congnghephanmem.filmhay.fragment.lich_su"
         android:label="fragment_film_doc_quyen"
-        tools:layout="@layout/fragment_film_doc_quyen" />
+        tools:layout="@layout/fragment_lich_su_phim" />
     <fragment
         android:id="@+id/profile"
         android:name="com.congnghephanmem.filmhay.fragment.profile"

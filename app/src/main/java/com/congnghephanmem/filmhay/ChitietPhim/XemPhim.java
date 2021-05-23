@@ -1,17 +1,18 @@
 package com.congnghephanmem.filmhay.ChitietPhim;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.VideoView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.congnghephanmem.filmhay.R;
 
 public class XemPhim extends AppCompatActivity {
     Intent intent;
     VideoView xemphim;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,5 +26,7 @@ public class XemPhim extends AppCompatActivity {
                 mp.start();
             }
         });
+
+
     }
 }

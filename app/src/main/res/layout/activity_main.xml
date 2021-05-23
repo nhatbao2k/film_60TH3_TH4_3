@@ -52,41 +52,6 @@
             </TableRow>
         </TableLayout>
     </androidx.appcompat.widget.Toolbar>
-
-    <!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
-<!--        <TableLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:stretchColumns="1"-->
-<!--            android:shrinkColumns="0">-->
-<!--            <TableRow>-->
-<!--                <TextView-->
-<!--                    android:layout_marginLeft="10dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Trang chủ"-->
-<!--                    android:textSize="30sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="#FFF"/>-->
-<!--            </TableRow>-->
-<!--            <TableRow android:gravity="center">-->
-<!--                <ImageView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:id="@+id/img_sale"/>-->
-<!--            </TableRow>-->
-<!--            <com.denzcoskun.imageslider.ImageSlider-->
-<!--                android:id="@+id/imageSlide"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="200dp"-->
-<!--                app:auto_cycle="true"-->
-<!--                app:delay="0"-->
-<!--                app:period="3000"/>-->
-<!--        </TableLayout>-->
-<!--    </ScrollView>-->
-
     <fragment
         android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"

@@ -1,10 +1,5 @@
 package com.congnghephanmem.filmhay.SignIn;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -19,7 +14,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.congnghephanmem.filmhay.ForgotPassActivity;
 import com.congnghephanmem.filmhay.MainActivity;
@@ -38,7 +37,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -179,6 +177,7 @@ public class SignInActivity extends AppCompatActivity {
                         GetData.ten = user1.getName();
                         GetData.email = user1.getEmail();
                         GetData.avatar = user1.getAvatar();
+                        GetData.phone = user1.getPhone();
                     }
                 }
             }

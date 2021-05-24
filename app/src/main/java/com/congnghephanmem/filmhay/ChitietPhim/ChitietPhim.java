@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.congnghephanmem.filmhay.Model.GetData;
 import com.congnghephanmem.filmhay.Model.History;
+import com.congnghephanmem.filmhay.Model.Report;
 import com.congnghephanmem.filmhay.Model.binhluan;
 import com.congnghephanmem.filmhay.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -45,6 +47,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ChitietPhim extends AppCompatActivity {
     Intent intent;
     ImageView img;
@@ -58,6 +63,8 @@ public class ChitietPhim extends AppCompatActivity {
     Adapter_cmt adapterCmt;
     ArrayList<binhluan> arrayList;
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+    Button btn_report;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +72,7 @@ public class ChitietPhim extends AppCompatActivity {
         intent = getIntent();
         reference = FirebaseDatabase.getInstance().getReference();
         link = intent.getStringExtra("link");
+        id = String.valueOf(intent.getIntExtra("id",0));
         img = (ImageView) findViewById(R.id.img_chitietphim);
         chitietphim  =(RelativeLayout) findViewById(R.id.chitietphim);
         Picasso.get().load(intent.getIntExtra("img",0)).into(img);
@@ -73,14 +81,77 @@ public class ChitietPhim extends AppCompatActivity {
         mota_chitietphim = (TextView) findViewById(R.id.mota_chitietphim);
         mota_chitietphim.setText(intent.getStringExtra("detal"));
         listView =(ListView) findViewById(R.id.list_item_bl);
-       arrayList = new ArrayList<>();
-
+        arrayList = new ArrayList<>();
         xemtrailer();
         xemphim();
         setbtn_cmt();
         get_data_cmt();
-
+        report();
     }
+
+    private void report() {
+        btn_report = (Button) findViewById(R.id.btn_report);
+        btn_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogReport();
+            }
+        });
+    }
+
+    private void showDialogReport(){
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_report);
+        dialog.show();
+
+        Button btn_ok = (Button) dialog.findViewById(R.id.btn_ok_report);
+        Button btn_cancel = (Button) dialog.findViewById(R.id.btn_report_cancel);
+        CheckBox checkBoxFilmError = (CheckBox) dialog.findViewById(R.id.checkbox_film_die);
+        CheckBox checkBoxFilmQuality = (CheckBox) dialog.findViewById(R.id.checkbox_film_quality);
+        CheckBox checkBoxFilmDifference = (CheckBox) dialog.findViewById(R.id.checkbox_different);
+        EditText editText = (EditText) dialog.findViewById(R.id.Edit_comment_difference);
+
+        checkBoxFilmDifference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkBoxFilmDifference.isChecked()){
+                    editText.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String nameReport = "";
+                if (checkBoxFilmError.isChecked()){
+                    nameReport = checkBoxFilmError.getText().toString();
+                }
+                if (checkBoxFilmQuality.isChecked()){
+                    nameReport += "/" +checkBoxFilmQuality.getText().toString();
+                }
+                Report report = new Report(id, nameReport, editText.getText().toString());
+                reference.child("Report").child(report.getId()).push().setValue(report, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        if (error == null){
+                            Toast.makeText(ChitietPhim.this, "Báo cáo thành công", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+                    }
+                });
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
     void xemtrailer(){
         btn_xemtrailer_chitietphim = (Button) findViewById(R.id.btn_xemtrailer_chitietphim);
         btn_xemtrailer_chitietphim.setOnClickListener(new View.OnClickListener() {

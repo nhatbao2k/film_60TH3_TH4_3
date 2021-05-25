@@ -94,7 +94,11 @@ public class ChitietPhim extends AppCompatActivity {
         btn_report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialogReport();
+                if (GetData.ten.equals(":))")){
+                    Toast.makeText(ChitietPhim.this, "Đăng nhập để thực hiện tính năng này", Toast.LENGTH_SHORT).show();
+                }else {
+                    showDialogReport();
+                }
             }
         });
     }
@@ -238,11 +242,13 @@ public class ChitietPhim extends AppCompatActivity {
 
                 binhluan bl;
                 if (GetData.ten.equals(":))")){
-                   bl = new binhluan("Người dùng",txt_comt.getText().toString().trim(),System.currentTimeMillis());
+//                   bl = new binhluan("Người dùng",txt_comt.getText().toString().trim(),System.currentTimeMillis());
+                    Toast.makeText(ChitietPhim.this, "Đăng nhập để thực hiện bình luận", Toast.LENGTH_SHORT).show();
                 }else{
                     bl = new binhluan(GetData.ten,txt_comt.getText().toString().trim(),System.currentTimeMillis());
+                    reference.child("comment").child(intent.getIntExtra("id",0)+"").push().setValue(bl);
                 }
-                reference.child("comment").child(intent.getIntExtra("id",0)+"").push().setValue(bl);
+
                 txt_comt.setText("");
             }
         });

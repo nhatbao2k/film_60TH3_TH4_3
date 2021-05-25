@@ -53,7 +53,7 @@ public class Search extends AppCompatActivity {
 
                     }
                 }
-
+        //updatemoi
 
                 danhMucs.add(danhMuc);
                 adapter_search = new Adapter_search(Search.this,R.layout.item_list_search,danhMucs);

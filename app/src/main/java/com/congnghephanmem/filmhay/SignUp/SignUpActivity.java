@@ -4,7 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -18,6 +22,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.congnghephanmem.filmhay.BroadcastReceiver.NetworkChangeReciever;
 import com.congnghephanmem.filmhay.DatePickerFragment;
 import com.congnghephanmem.filmhay.Model.User;
 import com.congnghephanmem.filmhay.OnSwipeTouchListener;
@@ -63,6 +68,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnFocusCha
     User user;
     DatabaseReference mData;
     String mail, pass;
+    BroadcastReceiver broadcastReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +126,32 @@ public class SignUpActivity extends AppCompatActivity implements View.OnFocusCha
                 finish();
             }
         });
+
+        broadcastReceiver = new NetworkChangeReciever();
+        registerNetWorkBroadcastReciver();
+    }
+
+    protected void registerNetWorkBroadcastReciver(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+
+    protected void unregisterNetwork(){
+        try {
+            unregisterReceiver(broadcastReceiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterNetwork();
     }
 
     private void checkEmpty(){

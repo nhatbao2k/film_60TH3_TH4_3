@@ -78,7 +78,7 @@ public class home extends Fragment {
     @BindView(R.id.recyler_danh_muc)
     RecyclerView recyclerView;
     RecyclerDanhMucAdapter recyclerDanhMucAdapter;
-    ArrayList<DanhMuc> danhMucArrayList;
+    public static ArrayList<DanhMuc> danhMucArrayList;
     @BindView(R.id.recyler_anime_hot)
     RecyclerView recyclerViewAnime;
     public static ArrayList<DanhMuc> animeHotArray;
@@ -203,5 +203,19 @@ public class home extends Fragment {
         }
 
         return danhMuc;
+    }
+
+    public static DanhMuc serach_theloai(String n){
+        DanhMuc danhMuc=new DanhMuc(0,0,"","","");
+        for (int i=0;i<danhMucArrayList.size();i++){
+            if (n.equals(danhMucArrayList.get(i).getTenTheLoai())){
+                danhMuc =danhMucArrayList.get(i);
+            }
+        }
+        return danhMuc;
+    }
+
+    public static ArrayList<DanhMuc> dm(){
+        return animeHotArray;
     }
 }

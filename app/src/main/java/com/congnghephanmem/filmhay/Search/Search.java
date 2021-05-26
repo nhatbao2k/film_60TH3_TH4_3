@@ -2,7 +2,11 @@ package com.congnghephanmem.filmhay.Search;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,8 +14,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.congnghephanmem.filmhay.Adapter.Adapter_search;
+import com.congnghephanmem.filmhay.BroadcastReceiver.NetworkChangeReciever;
 import com.congnghephanmem.filmhay.ChitietPhim.ChitietPhim;
 import com.congnghephanmem.filmhay.Model.DanhMuc;
 import com.congnghephanmem.filmhay.R;
@@ -25,6 +31,7 @@ public class Search extends AppCompatActivity {
     Adapter_search adapter_search;
     EditText search;
     DanhMuc danhMuc;
+    BroadcastReceiver broadcastReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +48,16 @@ public class Search extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 danhMucs.clear();
-                 danhMuc= home.serach(search.getText().toString().trim());
+                danhMuc= home.serach(search.getText().toString().trim());
                 if (danhMuc.getTenTheLoai().equals("")){
-                    return;
-                }
+                    danhMuc= home.serach_theloai(search.getText().toString().trim());
+                    if (danhMuc.getTenTheLoai().equals("")){
+                        Toast.makeText(Search.this, "Không có dữ liệu", Toast.LENGTH_SHORT).show();
+                        return;
+                    }else {
 
+                    }
+                }
                 danhMucs.add(danhMuc);
                 adapter_search = new Adapter_search(Search.this,R.layout.item_list_search,danhMucs);
                 listView.setAdapter(adapter_search);
@@ -70,6 +82,29 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        broadcastReceiver = new NetworkChangeReciever();
+        registerNetWorkBroadcastReciver();
+    }
+    protected void registerNetWorkBroadcastReciver(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
 
+    protected void unregisterNetwork(){
+        try {
+            unregisterReceiver(broadcastReceiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterNetwork();
     }
 }

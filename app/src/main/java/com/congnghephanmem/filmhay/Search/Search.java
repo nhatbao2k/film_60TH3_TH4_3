@@ -19,18 +19,19 @@ import android.widget.Toast;
 import com.congnghephanmem.filmhay.Adapter.Adapter_search;
 import com.congnghephanmem.filmhay.BroadcastReceiver.NetworkChangeReciever;
 import com.congnghephanmem.filmhay.ChitietPhim.ChitietPhim;
-import com.congnghephanmem.filmhay.Model.DanhMuc;
+import com.congnghephanmem.filmhay.DanhMuc.Click_DanhMuc;
+import com.congnghephanmem.filmhay.Model.Film;
 import com.congnghephanmem.filmhay.R;
 import com.congnghephanmem.filmhay.fragment.home;
 
 import java.util.ArrayList;
 
 public class Search extends AppCompatActivity {
-    ArrayList<DanhMuc> danhMucs;
+    ArrayList<Film> films;
     ListView listView;
     Adapter_search adapter_search;
     EditText search;
-    DanhMuc danhMuc;
+    Film film;
     BroadcastReceiver broadcastReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class Search extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         search = (EditText) findViewById(R.id.search_text);
         listView = (ListView) findViewById(R.id.list_item_search);
-        danhMucs = new ArrayList<>();
+        films = new ArrayList<>();
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -47,19 +48,19 @@ public class Search extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                danhMucs.clear();
-                danhMuc= home.serach(search.getText().toString().trim());
-                if (danhMuc.getTenTheLoai().equals("")){
-                    danhMuc= home.serach_theloai(search.getText().toString().trim());
-                    if (danhMuc.getTenTheLoai().equals("")){
+                films.clear();
+                film= home.serach(search.getText().toString().trim());
+                if (film.getTenTheLoai().equals("")){
+                    film= home.serach_theloai(search.getText().toString().trim());
+                    if (film.getTenTheLoai().equals("")){
                         Toast.makeText(Search.this, "Không có dữ liệu", Toast.LENGTH_SHORT).show();
                         return;
                     }else {
 
                     }
                 }
-                danhMucs.add(danhMuc);
-                adapter_search = new Adapter_search(Search.this,R.layout.item_list_search,danhMucs);
+                films.add(film);
+                adapter_search = new Adapter_search(Search.this,R.layout.item_list_search,films);
                 listView.setAdapter(adapter_search);
             }
 
@@ -72,13 +73,19 @@ public class Search extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(Search.this, ChitietPhim.class);
-                intent.putExtra("img",danhMuc.getImg());
-                intent.putExtra("name",danhMuc.getTenTheLoai());
-                intent.putExtra("detal",danhMuc.getMota());
-                intent.putExtra("link",danhMuc.getLink());
-                intent.putExtra("id",danhMuc.getId());
-                startActivity(intent);
+                if (film.getId()>100){
+                    Intent intent= new Intent(Search.this, Click_DanhMuc.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(Search.this, ChitietPhim.class);
+                    intent.putExtra("img", film.getImg());
+                    intent.putExtra("name", film.getTenTheLoai());
+                    intent.putExtra("detal", film.getMota());
+                    intent.putExtra("link", film.getLink());
+                    intent.putExtra("id", film.getId());
+                    startActivity(intent);
+                }
+
             }
         });
 

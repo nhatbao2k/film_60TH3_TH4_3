@@ -1,6 +1,6 @@
 package com.congnghephanmem.filmhay.Model;
 
-public class DanhMuc {
+public class Film {
     private  int id;
     private int img;
     private String tenTheLoai;
@@ -47,10 +47,10 @@ public class DanhMuc {
         this.tenTheLoai = tenTheLoai;
     }
 
-    public DanhMuc() {
+    public Film() {
     }
 
-    public DanhMuc(int id, int img, String tenTheLoai, String mota, String link) {
+    public Film(int id, int img, String tenTheLoai, String mota, String link) {
         this.id = id;
         this.img = img;
         this.tenTheLoai = tenTheLoai;

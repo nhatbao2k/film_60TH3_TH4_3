@@ -4,7 +4,15 @@ public class binhluan {
     private String name;
     private String text;
     private long id;
+    private int idcmt;
 
+    public int getIdcmt() {
+        return idcmt;
+    }
+
+    public void setIdcmt(int idcmt) {
+        this.idcmt = idcmt;
+    }
     public binhluan() {
     }
 

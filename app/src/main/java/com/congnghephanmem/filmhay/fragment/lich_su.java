@@ -112,6 +112,9 @@ public class lich_su extends Fragment implements InterfaceHistoryFilm {
                 historyArrayList.add(history);
                 recyclerView.setAdapter(recyclerViewHistoryFilmAdapter);
                 recyclerViewHistoryFilmAdapter.notifyDataSetChanged();
+                if (historyArrayList.size() == 0){
+                    Toast.makeText(getActivity(), "Bạn chưa xem bộ phim nào", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

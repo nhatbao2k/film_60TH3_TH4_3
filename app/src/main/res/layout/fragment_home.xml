@@ -74,21 +74,21 @@
                 android:id="@+id/recyler_anime_hot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ani"
-                    android:textSize="15sp"
-                    android:textColor="#FFF"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tất cả"
-                    android:textSize="15sp"
-                    android:textColor="#FFB5C5"
-                    android:layout_column="2"/>
-            </TableRow>
+<!--            <TableRow>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text=""-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="#FFF"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Tất cả"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="#FFB5C5"-->
+<!--                    android:layout_column="2"/>-->
+<!--            </TableRow>-->
         </TableLayout>
     </ScrollView>
 </FrameLayout>

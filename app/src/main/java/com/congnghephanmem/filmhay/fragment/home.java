@@ -13,7 +13,7 @@ import com.congnghephanmem.filmhay.Adapter.RecyclerAnimeAdapter;
 import com.congnghephanmem.filmhay.Adapter.RecyclerDanhMucAdapter;
 import com.congnghephanmem.filmhay.Interface.InterfaceAnime;
 import com.congnghephanmem.filmhay.Interface.InterfaceDanhMuc;
-import com.congnghephanmem.filmhay.Model.DanhMuc;
+import com.congnghephanmem.filmhay.Model.Film;
 import com.congnghephanmem.filmhay.R;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -78,10 +78,10 @@ public class home extends Fragment {
     @BindView(R.id.recyler_danh_muc)
     RecyclerView recyclerView;
     RecyclerDanhMucAdapter recyclerDanhMucAdapter;
-    public static ArrayList<DanhMuc> danhMucArrayList;
+    public static ArrayList<Film> danhMucArrayList;
     @BindView(R.id.recyler_anime_hot)
     RecyclerView recyclerViewAnime;
-    public static ArrayList<DanhMuc> animeHotArray;
+    public static ArrayList<Film> animeHotArray;
     RecyclerAnimeAdapter recyclerAnimeAdapter;
 
     @Override
@@ -100,17 +100,17 @@ public class home extends Fragment {
 
         ButterKnife.bind(this, view);
         danhMucArrayList = new ArrayList<>();
-        danhMucArrayList.add(new DanhMuc(101,R.drawable.hanhdong,"Hành động","",""));
-        danhMucArrayList.add(new DanhMuc(102,R.drawable.hanhdong,"Phép thuật","",""));
-        danhMucArrayList.add(new DanhMuc(103,R.drawable.hanhdong,"Isekai","",""));
-        danhMucArrayList.add(new DanhMuc(104,R.drawable.hanhdong,"Đời thường","",""));
-        danhMucArrayList.add(new DanhMuc(105,R.drawable.hanhdong,"Harem","",""));
-        danhMucArrayList.add(new DanhMuc(106,R.drawable.hanhdong,"Học đường","",""));
-        danhMucArrayList.add(new DanhMuc(107,R.drawable.hanhdong,"Thể thao","",""));
-        danhMucArrayList.add(new DanhMuc(108,R.drawable.hanhdong,"Phiêu lưu","",""));
-        danhMucArrayList.add(new DanhMuc(109,R.drawable.hanhdong,"Kinh dị","",""));
-        danhMucArrayList.add(new DanhMuc(110,R.drawable.hanhdong,"Hài hước","",""));
-        danhMucArrayList.add(new DanhMuc(111,R.drawable.hanhdong,"Tình cảm","",""));
+        danhMucArrayList.add(new Film(101,R.drawable.hd1,"Hành động","",""));
+        danhMucArrayList.add(new Film(102,R.drawable.hd2,"Phép thuật","",""));
+        danhMucArrayList.add(new Film(103,R.drawable.hd3,"Isekai","",""));
+        danhMucArrayList.add(new Film(104,R.drawable.hd4,"Đời thường","",""));
+        danhMucArrayList.add(new Film(105,R.drawable.hd5,"Harem","",""));
+        danhMucArrayList.add(new Film(106,R.drawable.hd6,"Học đường","",""));
+        danhMucArrayList.add(new Film(107,R.drawable.hanhdong,"Thể thao","",""));
+        danhMucArrayList.add(new Film(108,R.drawable.hanhdong,"Phiêu lưu","",""));
+        danhMucArrayList.add(new Film(109,R.drawable.hanhdong,"Kinh dị","",""));
+        danhMucArrayList.add(new Film(110,R.drawable.hanhdong,"Hài hước","",""));
+        danhMucArrayList.add(new Film(111,R.drawable.hanhdong,"Tình cảm","",""));
 
         recyclerDanhMucAdapter = new RecyclerDanhMucAdapter(danhMucArrayList, getContext(), new InterfaceDanhMuc() {
             @Override
@@ -123,7 +123,7 @@ public class home extends Fragment {
         recyclerView.setAdapter(recyclerDanhMucAdapter);
 
         animeHotArray = new ArrayList<>();
-//        animeHotArray.add(new DanhMuc(R.drawable.kimetsu_no_yaiba, "Kimetsu No Yaiba","Amazing, good job!!\nLO LẮNG\n" +
+//        animeHotArray.add(new Film(R.drawable.kimetsu_no_yaiba, "Kimetsu No Yaiba","Amazing, good job!!\nLO LẮNG\n" +
 //                "Một phụ nữ nói với bác sĩ:\n" +
 //                "\n" +
 //                "- Thưa bác sĩ, xin ông đừng giấu giếm tôi điều gì cả. Hãy nói tôi nghe tình trạng sức khoẻ của chồng tôi như thế nào sau khi bị gãy tay. Không biết rõ điều này thì tôi chết mất.\n" +
@@ -131,7 +131,7 @@ public class home extends Fragment {
 //                "- Bà yên tâm, ông ấy rồi sẽ khoẻ dần thôi mà.\n" +
 //                "\n" +
 //                "- Vậy có nghĩa là ông ấy sẽ rửa bát được chứ ạ?","https://firebasestorage.googleapis.com/v0/b/tets-c58bb.appspot.com/o/Video_Social%2F1612513927367?alt=media&token=7f297cdb-cb59-4487-a06a-ae090b358993"));
-        animeHotArray.add(new DanhMuc(1,R.drawable.kimetsu_no_yaiba_mugen_train,"Mugen Train","LO LẮNG\n" +
+        animeHotArray.add(new Film(1,R.drawable.kimetsu_no_yaiba_mugen_train,"Mugen Train","LO LẮNG\n" +
                 "Một phụ nữ nói với bác sĩ:\n" +
                 "\n" +
                 "- Thưa bác sĩ, xin ông đừng giấu giếm tôi điều gì cả. Hãy nói tôi nghe tình trạng sức khoẻ của chồng tôi như thế nào sau khi bị gãy tay. Không biết rõ điều này thì tôi chết mất.\n" +
@@ -139,7 +139,7 @@ public class home extends Fragment {
                 "- Bà yên tâm, ông ấy rồi sẽ khoẻ dần thôi mà.\n" +
                 "\n" +
                 "- Vậy có nghĩa là ông ấy sẽ rửa bát được chứ ạ?","https://firebasestorage.googleapis.com/v0/b/tets-c58bb.appspot.com/o/Video_Social%2F1612513927367?alt=media&token=7f297cdb-cb59-4487-a06a-ae090b358993"));
-        animeHotArray.add(new DanhMuc(2,R.drawable.naruto_shipuden, "Naruto shipuden","LO LẮNG\n" +
+        animeHotArray.add(new Film(2,R.drawable.naruto_shipuden, "Naruto shipuden","LO LẮNG\n" +
                 "Một phụ nữ nói với bác sĩ:\n" +
                 "\n" +
                 "- Thưa bác sĩ, xin ông đừng giấu giếm tôi điều gì cả. Hãy nói tôi nghe tình trạng sức khoẻ của chồng tôi như thế nào sau khi bị gãy tay. Không biết rõ điều này thì tôi chết mất.\n" +
@@ -147,7 +147,7 @@ public class home extends Fragment {
                 "- Bà yên tâm, ông ấy rồi sẽ khoẻ dần thôi mà.\n" +
                 "\n" +
                 "- Vậy có nghĩa là ông ấy sẽ rửa bát được chứ ạ?","https://firebasestorage.googleapis.com/v0/b/tets-c58bb.appspot.com/o/Video_Social%2F1612513927367?alt=media&token=7f297cdb-cb59-4487-a06a-ae090b358993"));
-        animeHotArray.add(new DanhMuc(3,R.drawable.onepiece, "One piece","LO LẮNG\n" +
+        animeHotArray.add(new Film(3,R.drawable.onepiece, "One piece","LO LẮNG\n" +
                 "Một phụ nữ nói với bác sĩ:\n" +
                 "\n" +
                 "- Thưa bác sĩ, xin ông đừng giấu giếm tôi điều gì cả. Hãy nói tôi nghe tình trạng sức khoẻ của chồng tôi như thế nào sau khi bị gãy tay. Không biết rõ điều này thì tôi chết mất.\n" +
@@ -155,7 +155,7 @@ public class home extends Fragment {
                 "- Bà yên tâm, ông ấy rồi sẽ khoẻ dần thôi mà.\n" +
                 "\n" +
                 "- Vậy có nghĩa là ông ấy sẽ rửa bát được chứ ạ?","https://firebasestorage.googleapis.com/v0/b/tets-c58bb.appspot.com/o/Video_Social%2F1612513927367?alt=media&token=7f297cdb-cb59-4487-a06a-ae090b358993"));
-        animeHotArray.add(new DanhMuc(4,R.drawable.mushoku_tensei, "Mushoku Tensei","LO LẮNG\n" +
+        animeHotArray.add(new Film(4,R.drawable.mushoku_tensei, "Mushoku Tensei","LO LẮNG\n" +
                 "Một phụ nữ nói với bác sĩ:\n" +
                 "\n" +
                 "- Thưa bác sĩ, xin ông đừng giấu giếm tôi điều gì cả. Hãy nói tôi nghe tình trạng sức khoẻ của chồng tôi như thế nào sau khi bị gãy tay. Không biết rõ điều này thì tôi chết mất.\n" +
@@ -163,7 +163,7 @@ public class home extends Fragment {
                 "- Bà yên tâm, ông ấy rồi sẽ khoẻ dần thôi mà.\n" +
                 "\n" +
                 "- Vậy có nghĩa là ông ấy sẽ rửa bát được chứ ạ?","https://firebasestorage.googleapis.com/v0/b/tets-c58bb.appspot.com/o/Video_Social%2F1612513927367?alt=media&token=7f297cdb-cb59-4487-a06a-ae090b358993"));
-        animeHotArray.add(new DanhMuc(5,R.drawable.naruto, "Naruto","XẤU XÍ\n" +
+        animeHotArray.add(new Film(5,R.drawable.naruto, "Naruto","XẤU XÍ\n" +
                 "Có hai vợ chồng nọ sống ở sâu dưới những ngọn đồi và rất hiếm khi thấy người qua lại. Một hôm, có người bán hàng rong đi qua, anh ta nhìn thấy ông chồng ngoài cửa nên vồn vã chào mời:\n" +
                 "\n" +
                 "- Ông hay bà nhà có muốn mua thứ gì không?\n" +
@@ -179,7 +179,7 @@ public class home extends Fragment {
                 "- Sau đó, ngày nào ông chồng cũng đến kho và nhìn vào tấm hình trong cái gương hai ba lần khiến bà vợ sinh nghi.\n" +
                 "\n" +
                 "- Thế là một ngày nọ bà chờ chồng đi ngủ rồi đi vào nhà kho và tìm thấy cái gương, bà ta cầm nó lên nhìn rồi nói thầm: Thì ra đây chính là mụ đàn bà xấu xí mà mấy hôm nay ông ta đang tán tỉnh!!!","https://firebasestorage.googleapis.com/v0/b/tets-c58bb.appspot.com/o/Video_Social%2F1612513927367?alt=media&token=7f297cdb-cb59-4487-a06a-ae090b358993"));
-        animeHotArray.add(new DanhMuc(6,R.drawable.slime, "Slime chuyển sinh","Amazing, good job!!","https://firebasestorage.googleapis.com/v0/b/tets-c58bb.appspot.com/o/Video_Social%2F1612513927367?alt=media&token=7f297cdb-cb59-4487-a06a-ae090b358993"));
+        animeHotArray.add(new Film(6,R.drawable.slime, "Slime chuyển sinh","Amazing, good job!!","https://firebasestorage.googleapis.com/v0/b/tets-c58bb.appspot.com/o/Video_Social%2F1612513927367?alt=media&token=7f297cdb-cb59-4487-a06a-ae090b358993"));
         recyclerAnimeAdapter = new RecyclerAnimeAdapter(getContext(), animeHotArray, new InterfaceAnime() {
             @Override
             public void onClick(int positon) {
@@ -193,29 +193,29 @@ public class home extends Fragment {
         recyclerViewAnime.setAdapter(recyclerAnimeAdapter);
         return view;
     }
-    public static DanhMuc serach(String n){
-        DanhMuc danhMuc=new DanhMuc(0,0,"","","");
+    public static Film serach(String n){
+        Film film =new Film(0,0,"","","");
         for (int i=0;i<animeHotArray.size();i++){
             if (n.equals(animeHotArray.get(i).getTenTheLoai())){
-                danhMuc =animeHotArray.get(i);
+                film =animeHotArray.get(i);
             }
 
         }
 
-        return danhMuc;
+        return film;
     }
 
-    public static DanhMuc serach_theloai(String n){
-        DanhMuc danhMuc=new DanhMuc(0,0,"","","");
+    public static Film serach_theloai(String n){
+        Film film=new Film(0,0,"","","");
         for (int i=0;i<danhMucArrayList.size();i++){
             if (n.equals(danhMucArrayList.get(i).getTenTheLoai())){
-                danhMuc =danhMucArrayList.get(i);
+                film =danhMucArrayList.get(i);
             }
         }
-        return danhMuc;
+        return film;
     }
 
-    public static ArrayList<DanhMuc> dm(){
+    public static ArrayList<Film> dm(){
         return animeHotArray;
     }
 }

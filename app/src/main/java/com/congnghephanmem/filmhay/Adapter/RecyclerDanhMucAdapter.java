@@ -13,9 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.congnghephanmem.filmhay.DanhMuc.Click_DanhMuc;
 import com.congnghephanmem.filmhay.Interface.InterfaceDanhMuc;
-import com.congnghephanmem.filmhay.Model.DanhMuc;
+import com.congnghephanmem.filmhay.Model.Film;
 import com.congnghephanmem.filmhay.R;
-import com.congnghephanmem.filmhay.fragment.home;
 
 import java.util.List;
 
@@ -24,12 +23,12 @@ import butterknife.ButterKnife;
 
 public class RecyclerDanhMucAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<DanhMuc> danhMucList;
+    private List<Film> filmList;
     private Context context;
     InterfaceDanhMuc interfaceDanhMuc;
 
-    public RecyclerDanhMucAdapter(List<DanhMuc> danhMucList, Context context, InterfaceDanhMuc interfaceDanhMuc) {
-        this.danhMucList = danhMucList;
+    public RecyclerDanhMucAdapter(List<Film> filmList, Context context, InterfaceDanhMuc interfaceDanhMuc) {
+        this.filmList = filmList;
         this.context = context;
         this.interfaceDanhMuc = interfaceDanhMuc;
     }
@@ -45,8 +44,8 @@ public class RecyclerDanhMucAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyRecyclerDanhMuc myRecyclerDanhMuc = (MyRecyclerDanhMuc) holder;
 
-        myRecyclerDanhMuc.img.setImageResource(danhMucList.get(position).getImg());
-        myRecyclerDanhMuc.tv.setText(danhMucList.get(position).getTenTheLoai());
+        myRecyclerDanhMuc.img.setImageResource(filmList.get(position).getImg());
+        myRecyclerDanhMuc.tv.setText(filmList.get(position).getTenTheLoai());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +59,7 @@ public class RecyclerDanhMucAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
-        return danhMucList.size();
+        return filmList.size();
     }
 }
 class MyRecyclerDanhMuc extends RecyclerView.ViewHolder{

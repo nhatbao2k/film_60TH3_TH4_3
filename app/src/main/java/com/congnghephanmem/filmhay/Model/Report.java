@@ -1,6 +1,7 @@
 package com.congnghephanmem.filmhay.Model;
 
 public class Report {
+    private String IDReport;
     private String id;
     private String nameReport;
     private String comment;
@@ -27,6 +28,14 @@ public class Report {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getIDReport() {
+        return IDReport;
+    }
+
+    public void setIDReport(String IDReport) {
+        this.IDReport = IDReport;
     }
 
     public Report() {

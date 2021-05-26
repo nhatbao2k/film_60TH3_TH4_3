@@ -1,25 +1,34 @@
 package com.congnghephanmem.filmhay.Model;
 
 public class binhluan {
-    private String name;
+    private String phone;
     private String text;
     private long id;
+    private int idcmt;
+
+    public int getIdcmt() {
+        return idcmt;
+    }
+
+    public void setIdcmt(int idcmt) {
+        this.idcmt = idcmt;
+    }
 
     public binhluan() {
     }
 
     public binhluan(String name, String text, long id) {
-        this.name = name;
+        this.phone = name;
         this.text = text;
         this.id = id;
     }
 
     public String getName() {
-        return name;
+        return phone;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.phone = name;
     }
 
     public String getText() {

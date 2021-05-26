@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.congnghephanmem.filmhay.Model.DanhMuc;
+import com.congnghephanmem.filmhay.Model.Film;
 import com.congnghephanmem.filmhay.R;
 import com.squareup.picasso.Picasso;
 
@@ -17,17 +17,17 @@ import java.util.List;
 public class Adapter_search extends BaseAdapter {
     Context context;
     int layout;
-    List<DanhMuc> danhMucs;
+    List<Film> films;
 
-    public Adapter_search(Context context, int layout, List<DanhMuc> danhMucs) {
+    public Adapter_search(Context context, int layout, List<Film> films) {
         this.context = context;
         this.layout = layout;
-        this.danhMucs = danhMucs;
+        this.films = films;
     }
 
     @Override
     public int getCount() {
-        return danhMucs.size();
+        return films.size();
     }
 
     @Override
@@ -46,8 +46,8 @@ public class Adapter_search extends BaseAdapter {
         convertView = inflater.inflate(layout,null);
         ImageView imageView = convertView.findViewById(R.id.img_search);
         TextView textView = convertView.findViewById(R.id.ten_search);
-        Picasso.get().load(danhMucs.get(position).getImg()).into(imageView);
-        textView.setText(danhMucs.get(position).getTenTheLoai());
+        Picasso.get().load(films.get(position).getImg()).into(imageView);
+        textView.setText(films.get(position).getTenTheLoai());
         return convertView;
     }
 }

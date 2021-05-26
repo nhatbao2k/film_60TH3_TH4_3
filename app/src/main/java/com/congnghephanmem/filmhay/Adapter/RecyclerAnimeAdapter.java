@@ -7,14 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.congnghephanmem.filmhay.ChitietPhim.ChitietPhim;
 import com.congnghephanmem.filmhay.Interface.InterfaceAnime;
-import com.congnghephanmem.filmhay.Model.DanhMuc;
+import com.congnghephanmem.filmhay.Model.Film;
 import com.congnghephanmem.filmhay.R;
 
 import java.util.List;
@@ -24,12 +23,12 @@ import butterknife.ButterKnife;
 
 public class RecyclerAnimeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
-    private List<DanhMuc> danhMucList;
+    private List<Film> filmList;
     private InterfaceAnime interfaceAnime;
 
-    public RecyclerAnimeAdapter(Context context, List<DanhMuc> danhMucList, InterfaceAnime interfaceAnime) {
+    public RecyclerAnimeAdapter(Context context, List<Film> filmList, InterfaceAnime interfaceAnime) {
         this.context = context;
-        this.danhMucList = danhMucList;
+        this.filmList = filmList;
         this.interfaceAnime = interfaceAnime;
     }
 
@@ -43,19 +42,19 @@ public class RecyclerAnimeAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyRecyclerAnimeHolder myRecyclerAnimeHolder = (MyRecyclerAnimeHolder) holder;
-        myRecyclerAnimeHolder.img.setImageResource(danhMucList.get(position).getImg());
-        myRecyclerAnimeHolder.tv_name.setText(danhMucList.get(position).getTenTheLoai());
+        myRecyclerAnimeHolder.img.setImageResource(filmList.get(position).getImg());
+        myRecyclerAnimeHolder.tv_name.setText(filmList.get(position).getTenTheLoai());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 interfaceAnime.onClick(holder.getAdapterPosition());
                 Intent intent = new Intent(context, ChitietPhim.class);
-                intent.putExtra("img",danhMucList.get(position).getImg());
-                intent.putExtra("name",danhMucList.get(position).getTenTheLoai());
-                intent.putExtra("detal",danhMucList.get(position).getMota());
-                intent.putExtra("link",danhMucList.get(position).getLink());
-                intent.putExtra("id",danhMucList.get(position).getId());
+                intent.putExtra("img", filmList.get(position).getImg());
+                intent.putExtra("name", filmList.get(position).getTenTheLoai());
+                intent.putExtra("detal", filmList.get(position).getMota());
+                intent.putExtra("link", filmList.get(position).getLink());
+                intent.putExtra("id", filmList.get(position).getId());
                 context.startActivity(intent);
 
             }
@@ -64,7 +63,7 @@ public class RecyclerAnimeAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemCount() {
-        return danhMucList.size();
+        return filmList.size();
     }
 }
 

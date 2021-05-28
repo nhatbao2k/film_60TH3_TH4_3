@@ -144,7 +144,7 @@ public class ChitietPhim extends AppCompatActivity {
                 if (checkBoxFilmQuality.isChecked()){
                     nameReport += "/" +checkBoxFilmQuality.getText().toString();
                 }
-                Report report = new Report(id, nameReport, editText.getText().toString());
+                Report report = new Report(id, nameReport, GetData.phone, editText.getText().toString());
                 reference.child("Report").child(report.getId()).push().setValue(report, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {

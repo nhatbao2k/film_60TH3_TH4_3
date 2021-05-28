@@ -3,6 +3,7 @@ package com.congnghephanmem.filmhay.Model;
 public class Report {
     private String IDReport;
     private String id;
+    private String phone;
     private String nameReport;
     private String comment;
 
@@ -37,12 +38,21 @@ public class Report {
         this.comment = comment;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public Report() {
     }
 
-    public Report(String id, String nameReport, String comment) {
+    public Report(String id, String nameReport, String phone, String comment) {
         this.id = id;
         this.nameReport = nameReport;
+        this.phone = phone;
         this.comment = comment;
     }
 }

@@ -43,6 +43,7 @@
             android:configChanges="screenSize"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".manager.ManagerFilmActivity"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/button">

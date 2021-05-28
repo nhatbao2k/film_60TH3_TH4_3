@@ -144,7 +144,9 @@ public class ChitietPhim extends AppCompatActivity {
                 if (checkBoxFilmQuality.isChecked()){
                     nameReport += "/" +checkBoxFilmQuality.getText().toString();
                 }
-                Report report = new Report(id, nameReport, GetData.phone, editText.getText().toString());
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy _ HH:mm:ss", Locale.getDefault());
+                String time = simpleDateFormat.format(new Date());
+                Report report = new Report(id, nameReport, GetData.phone, editText.getText().toString(), time);
                 reference.child("Report").child(report.getId()).push().setValue(report, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {

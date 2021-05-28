@@ -34,7 +34,12 @@ public class ManagerActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         setButtonHidde();
-
+        btnManagerFilm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ManagerActivity.this, ManagerFilmActivity.class));
+            }
+        });
     }
 
     private void setButtonHidde() {

@@ -6,6 +6,7 @@ public class Report {
     private String phone;
     private String nameReport;
     private String comment;
+    private String time;
 
     public String getIDReport() {
         return IDReport;
@@ -46,13 +47,22 @@ public class Report {
         this.phone = phone;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public Report() {
     }
 
-    public Report(String id, String nameReport, String phone, String comment) {
+    public Report(String id, String nameReport, String phone, String comment, String time) {
         this.id = id;
         this.nameReport = nameReport;
         this.phone = phone;
         this.comment = comment;
+        this.time = time;
     }
 }

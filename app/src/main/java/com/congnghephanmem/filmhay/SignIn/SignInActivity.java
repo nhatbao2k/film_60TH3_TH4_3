@@ -32,6 +32,7 @@ import com.congnghephanmem.filmhay.Model.User;
 import com.congnghephanmem.filmhay.OnSwipeTouchListener;
 import com.congnghephanmem.filmhay.R;
 import com.congnghephanmem.filmhay.SignUp.SignUpActivity;
+import com.congnghephanmem.filmhay.manager.ManagerActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -66,7 +67,7 @@ public class SignInActivity extends AppCompatActivity {
     DatabaseReference mData;
     @BindView(R.id.progress_sign_in)
     ProgressBar progressBar;
-    boolean check = false;
+    int check;
     String mail, pass;
     BroadcastReceiver broadcastReceiver;
     @Override
@@ -204,11 +205,21 @@ public class SignInActivity extends AppCompatActivity {
                 User user1 = snapshot.getValue(User.class);
                 if (edit_email.getText().toString().equals(user1.getEmail())){
                     if (user1.getRole().equals("viewer")){
-                        check = true;
+                        check = 3;
                         GetData.ten = user1.getName();
                         GetData.email = user1.getEmail();
                         GetData.avatar = user1.getAvatar();
                         GetData.phone = user1.getPhone();
+                    }
+
+                    if (user1.getRole().equals("admin")){
+                        check = 1;
+                        GetData.role = user1.getRole();
+                    }
+
+                    if (user1.getRole().equals("employeer")){
+                        check = 2;
+                        GetData.role = user1.getRole();
                     }
                 }
             }
@@ -255,9 +266,17 @@ public class SignInActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onFinish() {
-                                    Toast.makeText(SignInActivity.this, check+"", Toast.LENGTH_SHORT).show();
-                                    if (check == true){
+                                    if (check == 3){
                                         startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                                        finish();
+                                    }
+                                    if (check == 2){
+                                        startActivity(new Intent(SignInActivity.this, ManagerActivity.class));
+                                        finish();
+                                    }
+                                    if (check == 1){
+                                        startActivity(new Intent(SignInActivity.this, ManagerActivity.class));
+                                        finish();
                                     }
                                 }
                             }.start();

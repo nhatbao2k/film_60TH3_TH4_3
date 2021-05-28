@@ -4,7 +4,8 @@
     package="com.congnghephanmem.filmhay">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,14 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Filmhay"
         tools:replace="android:theme">
+        <activity android:name=".manager.ManagerActivity"></activity>
 
         <receiver android:name=".BroadcastReceiver.NetworkChangeReciever">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-        <activity android:name=".DanhMuc.Click_DanhMuc"></activity>
-        <activity android:name=".Search.Search"></activity>
+
+        <activity android:name=".DanhMuc.Click_DanhMuc" />
+        <activity android:name=".Search.Search" />
         <activity
             android:name=".ChitietPhim.XemPhim"
             android:screenOrientation="landscape" />

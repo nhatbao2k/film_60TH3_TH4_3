@@ -5,4 +5,5 @@ public class GetData {
     public static String phone;
     public static String ten=":))";
     public static String avatar="";
+    public static String role;
 }

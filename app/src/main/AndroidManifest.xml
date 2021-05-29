@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.congnghephanmem.filmhay">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Filmhay"
+        tools:replace="android:theme">
+        <activity android:name=".manager.report.InformationReport.InformationReportActivity"></activity>
+        <activity android:name=".manager.employeer.InformationEmployeer.InformationEmployeerActivity" />
+        <activity android:name=".manager.viewer.ChiTiet_ThanhVien" />
+        <activity android:name=".manager.viewer.QuanLyThanhVien" />
+        <activity android:name=".manager.employeer.ManagerEmployerActivity" />
+        <activity
+            android:name=".manager.Film.Add_film"
+            android:theme="@style/button" />
+        <activity android:name=".manager.ManagerActivity" />
+
+        <receiver android:name=".BroadcastReceiver.NetworkChangeReciever">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".DanhMuc.Click_DanhMuc" />
+        <activity android:name=".Search.Search" />
+        <activity
+            android:name=".ChitietPhim.XemPhim"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ChitietPhim.ChitietPhim"
+            android:theme="@style/button" />
+        <activity
+            android:name=".ForgotPassActivity"
+            android:parentActivityName=".SignIn.SignInActivity" />
+        <activity
+            android:name=".SignIn.SignInActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignUp.SignUpActivity"
+            android:configChanges="screenSize"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".manager.Film.ManagerFilmActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/button"></activity>
+        <activity android:name=".manager.report.ReportActivity" />
+    </application>
+
+</manifest>

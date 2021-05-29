@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".manager.employeer.InformationEmployeer.InformationEmployeerActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar_employeer"
+        android:layout_alignParentTop="true"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar_employeer">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/user_menu"
+            android:id="@+id/img_user_employeer"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:hint="Phone"
+                    android:id="@+id/Edit_phone_employeer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/calibri"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:maxLength="10"
+                    android:drawableLeft="@drawable/ic_action_arraw_phone"/>
+
+                <EditText
+                    android:hint="Email"
+                    android:id="@+id/Edit_email_employeer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/calibri"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:drawableLeft="@drawable/ic_action_arraw_email"/>
+
+
+                <EditText
+                    android:hint="Name"
+                    android:id="@+id/Edit_name_employeer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/calibri"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:maxLength="10"
+                    android:drawableLeft="@drawable/ic_action_person"/>
+
+                <RadioGroup
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:id="@+id/employeer_gt"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/employeer_nam"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:text="Nam"
+                        android:layout_margin="10dp"
+                        android:padding="10dp"
+                        android:checked="true"
+                        android:buttonTint="@color/green"/>
+
+                    <RadioButton
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/employeer_nu"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:text="Nữ"
+                        android:layout_margin="10dp"
+                        android:padding="10dp"
+                        android:buttonTint="@color/green"/>
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/Edit_date_employeer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/calibri"
+                    android:hint="Ngày sinh"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:drawableRight="@drawable/ic_action_arraw_date"/>
+
+                <Button
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/btn_update_employeer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/btn_radius"
+                    android:fontFamily="@font/calibri"
+                    android:text="Update"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/btn_delete_employeer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/btn_radius"
+                    android:fontFamily="@font/calibri"
+                    android:text="Delete"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

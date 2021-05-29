@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Chụp ảnh"
+        android:id="@+id/context_menu_take_photo"/>
+    <item android:title="Chọn ảnh"
+        android:id="@+id/context_menu_choose_photo"/>
+</menu>

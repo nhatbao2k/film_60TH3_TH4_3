@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#333333">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:src="@drawable/anh1"
+                android:scaleType="centerInside"
+                android:id="@+id/img_history_film"/>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ten phim"
+                    android:textColor="#fff"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:id="@+id/tv_history_name_film"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="mo ta"
+                    android:id="@+id/tv_inforation_film"
+                    android:lines="5"
+                    android:maxLines="5"
+                    android:ellipsize="end"
+                    android:textColor="#fff"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_history_time_film"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:textColor="#fff"
+                    android:text="thoi gian"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

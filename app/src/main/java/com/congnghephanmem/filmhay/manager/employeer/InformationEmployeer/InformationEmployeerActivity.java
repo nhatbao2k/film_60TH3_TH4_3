@@ -9,12 +9,16 @@ import androidx.core.app.NotificationCompat;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.MediaStore;
@@ -30,6 +34,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.congnghephanmem.filmhay.BroadcastReceiver.NetworkChangeReciever;
 import com.congnghephanmem.filmhay.DatePickerFragment;
 import com.congnghephanmem.filmhay.Model.GetData;
 import com.congnghephanmem.filmhay.Model.History;
@@ -88,6 +93,7 @@ public class InformationEmployeerActivity extends AppCompatActivity  {
     int REQUEST_CHOOSE_PHOTO = 321;
     private FirebaseAuth mAuth;
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+    BroadcastReceiver broadcastReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +118,9 @@ public class InformationEmployeerActivity extends AppCompatActivity  {
         loadIntent();
 
         returnEmployeerManager();
+
+        broadcastReceiver = new NetworkChangeReciever();
+        registerNetWorkBroadcastReciver();
     }
 
     private void returnEmployeerManager() {
@@ -454,5 +463,27 @@ public class InformationEmployeerActivity extends AppCompatActivity  {
             Toast.makeText(InformationEmployeerActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void registerNetWorkBroadcastReciver() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+    protected void unregisterNetwork(){
+        try {
+            unregisterReceiver(broadcastReceiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterNetwork();
     }
 }

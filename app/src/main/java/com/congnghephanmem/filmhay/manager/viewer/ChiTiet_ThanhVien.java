@@ -5,13 +5,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.congnghephanmem.filmhay.BroadcastReceiver.NetworkChangeReciever;
 import com.congnghephanmem.filmhay.Model.User;
 import com.congnghephanmem.filmhay.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +31,7 @@ public class ChiTiet_ThanhVien extends AppCompatActivity {
     Intent intent;
     Button btn_xoatv;
     DatabaseReference reference;
+    BroadcastReceiver broadcastReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,5 +95,29 @@ public class ChiTiet_ThanhVien extends AppCompatActivity {
         getSupportActionBar().setTitle("Thông tin thành viên");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        broadcastReceiver = new NetworkChangeReciever();
+        registerNetWorkBroadcastReciver();
+    }
+
+    private void registerNetWorkBroadcastReciver() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+    protected void unregisterNetwork(){
+        try {
+            unregisterReceiver(broadcastReceiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterNetwork();
     }
 }

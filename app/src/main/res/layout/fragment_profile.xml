@@ -71,14 +71,15 @@
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:background="#191919"
-                   android:text="Phim đã xem"
+                   android:text="Đổi mật khẩu"
                    android:textColor="#fff"
                    android:textAllCaps="false"
                    android:drawableRight="@drawable/ic_action_arraw_right"
                    android:drawablePadding="10dp"
                    android:layout_margin="10dp"
                    android:padding="10dp"
-                   android:id="@+id/btn_phim_da_xem"/>
+                   android:id="@+id/btn_change_pass"
+                   android:visibility="gone"/>
                <androidx.appcompat.widget.AppCompatButton
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"

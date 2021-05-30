@@ -2,6 +2,7 @@ package com.congnghephanmem.filmhay.manager.viewer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,9 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.congnghephanmem.filmhay.Model.User;
 import com.congnghephanmem.filmhay.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,7 +46,14 @@ public class ChiTiet_ThanhVien extends AppCompatActivity {
                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                         User user = snapshot.getValue(User.class);
                         if (user.getEmail().equals(intent.getStringExtra("mail"))){
-                            reference.child("User").child(snapshot.getKey()).removeValue();
+                            reference.child("User").child(snapshot.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(ChiTiet_ThanhVien.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(ChiTiet_ThanhVien.this, QuanLyThanhVien.class));
+                                    finish();
+                                }
+                            });
                         }
                     }
 
@@ -74,6 +84,10 @@ public class ChiTiet_ThanhVien extends AppCompatActivity {
         tv3.setText(tv3.getText().toString()+": "+intent.getStringExtra("phone"));
         tv4.setText(tv4.getText().toString()+": "+intent.getStringExtra("gender"));
         tv5.setText(tv5.getText().toString()+": "+intent.getStringExtra("birthday"));
-
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_chi_tiet_thanh_vien);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Thông tin thành viên");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

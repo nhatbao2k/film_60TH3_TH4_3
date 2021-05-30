@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".manager.viewer.ChiTiet_ThanhVien">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar_chi_tiet_thanh_vien"/>
     <ImageView
+        android:layout_below="@+id/toolbar_chi_tiet_thanh_vien"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:id="@+id/idd"
@@ -25,10 +30,7 @@
                android:id="@+id/name_tv"
                android:textSize="20dp"
                android:layout_marginTop="10dp"
-               android:layout_marginLeft="30dp"
-               >
-
-           </TextView>
+               android:layout_marginLeft="30dp"/>
 
 
        </TableRow>

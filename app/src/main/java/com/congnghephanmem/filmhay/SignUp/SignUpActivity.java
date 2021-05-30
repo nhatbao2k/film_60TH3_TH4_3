@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -28,11 +29,14 @@ import com.congnghephanmem.filmhay.Model.User;
 import com.congnghephanmem.filmhay.OnSwipeTouchListener;
 import com.congnghephanmem.filmhay.R;
 import com.congnghephanmem.filmhay.SignIn.SignInActivity;
+import com.congnghephanmem.filmhay.manager.employeer.InformationEmployeer.InformationEmployeerActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -197,9 +201,60 @@ public class SignUpActivity extends AppCompatActivity implements View.OnFocusCha
         mail = editMail.getText().toString();
         pass = editPass1.getText().toString();
         user = new User(editMail.getText().toString(), editPhone.getText().toString(),editName.getText().toString(),gt,eNgaySinhdk.getText().toString(),"viewer", "");
-        createAccount();
+        checkPhone();
+        new CountDownTimer(1000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                switch (check){
+                    case 1:
+                        Toast.makeText(SignUpActivity.this, "Số điện thoại này đã được sử dụng", Toast.LENGTH_SHORT).show();
+                        check = 0;
+                        break;
+                    case 0:
+                        createAccount();
+                        break;
+                }
+            }
+        }.start();
     }
 
+    public int check = 0;
+    private void checkPhone(){
+        mData.child("User").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, String previousChildName) {
+                User user = snapshot.getValue(User.class);
+                if (editPhone.getText().toString().equals(user.getPhone())){
+                    check = 1;
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     private void createAccount() {
         mAuth.createUserWithEmailAndPassword(mail, pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.congnghephanmem.filmhay.ChangePass.ChangePassActivity;
 import com.congnghephanmem.filmhay.Model.GetData;
 import com.congnghephanmem.filmhay.R;
 import com.congnghephanmem.filmhay.SignIn.SignInActivity;
@@ -80,8 +81,8 @@ public class profile extends Fragment {
 
     @BindView(R.id.btn_profileUser)
     Button btn_profile;
-    @BindView(R.id.btn_phim_da_xem)
-    Button btn_phimDaXem;
+    @BindView(R.id.btn_change_pass)
+    Button btn_doi_mk;
     @BindView(R.id.btn_sign_in)
     Button btn_dangNhap;
     @BindView(R.id.btn_sign_up)
@@ -108,6 +109,7 @@ public class profile extends Fragment {
             if (!GetData.avatar.isEmpty()){
                 Picasso.get().load(GetData.avatar).into(imageView);
             }
+            btn_doi_mk.setVisibility(View.VISIBLE);
         }
         btn_dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +132,13 @@ public class profile extends Fragment {
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), SignInActivity.class));
                 getActivity().finish();
+            }
+        });
+
+        btn_doi_mk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ChangePassActivity.class));
             }
         });
     }

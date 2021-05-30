@@ -5,88 +5,102 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".manager.Film.Add_film">
-    <TextView
-        android:id="@+id/chip1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mô tả Video"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textSize="30sp">
-
-    </TextView>
-    <EditText
-        android:id="@+id/mota_video"
-        android:layout_below="@+id/chip1"
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-
-
-        android:layout_centerHorizontal="true">
-
-    </EditText>
-    <EditText
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar_add_film"/>
+    <ScrollView
+        android:layout_below="@+id/toolbar_add_film"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tenphim_themphim"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:layout_below="@+id/mota_video"
-        android:hint="Tên Phim">
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/chip1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mô tả Video"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:textSize="30sp">
 
-    </EditText>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tenphim_themphim"
-        android:layout_marginTop="10dp"
-        android:text="Thêm Video"
-        android:id="@+id/btn_themvideo">
+            </TextView>
+            <EditText
+                android:id="@+id/mota_video"
+                android:layout_below="@+id/chip1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
 
-    </Button>
-    <ImageView
-        android:id="@+id/im"
-        android:layout_marginTop="30dp"
-        android:layout_width="300dp"
-        android:layout_height="250dp"
-        android:layout_below="@+id/btn_themvideo"
-        android:layout_centerHorizontal="true"
-       >
 
-    </ImageView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:textSize="28dp"
-        android:text="Clicl để chọn ảnh"
-        android:layout_below="@+id/btn_themvideo"
-        android:layout_centerHorizontal="true"
-        >
+                android:layout_centerHorizontal="true">
 
-    </TextView>
-    <ProgressBar
-        android:layout_below="@+id/im"
+            </EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tenphim_themphim"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_below="@+id/mota_video"
+                android:hint="Tên Phim">
 
-        android:layout_centerHorizontal="true"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:id="@+id/load_dang">
+            </EditText>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tenphim_themphim"
+                android:layout_marginTop="10dp"
+                android:text="Thêm Video"
+                android:id="@+id/btn_themvideo">
 
-    </ProgressBar>
-    <Button
-        android:id="@+id/btn_dang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đăng"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/im"
-        android:layout_marginTop="30dp">
+            </Button>
+            <ImageView
+                android:id="@+id/im"
+                android:layout_marginTop="30dp"
+                android:layout_width="300dp"
+                android:layout_height="250dp"
+                android:layout_below="@+id/btn_themvideo"
+                android:layout_centerHorizontal="true"
+                >
 
-    </Button>
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:textSize="28dp"
+                android:text="Clicl để chọn ảnh"
+                android:layout_below="@+id/btn_themvideo"
+                android:layout_centerHorizontal="true"
+                >
+
+            </TextView>
+            <ProgressBar
+                android:layout_below="@+id/im"
+
+                android:layout_centerHorizontal="true"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/load_dang">
+
+            </ProgressBar>
+            <Button
+                android:id="@+id/btn_dang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/im"
+                android:layout_marginTop="30dp">
+
+            </Button>
+        </RelativeLayout>
+    </ScrollView>
+
 
 </RelativeLayout>

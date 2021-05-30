@@ -2,6 +2,7 @@ package com.congnghephanmem.filmhay.manager.Film;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -79,8 +80,17 @@ public class Add_film extends AppCompatActivity {
 
         setBtn_dang();
         set_inset_img();
-
+        returnManagerFilm();
     }
+
+    private void returnManagerFilm() {
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_add_film);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Chi tiết phim");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
     private void set_inset_img(){
         im.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,14 +165,11 @@ public class Add_film extends AppCompatActivity {
                             if (id==0){
                                 databaseReference.child("Data_film").push().setValue(v);
                                 Toast.makeText(Add_film.this,"cu",Toast.LENGTH_SHORT).show();
-
-
                             }else {
                                 databaseReference.child("Data_film").addChildEventListener(new ChildEventListener() {
                                     @Override
                                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                                         Film f  = snapshot.getValue(Film.class);
-
 
                                         if (f.getId()==id){
                                             Film v1 = new Film(id,url_img.toString(),txt_tenphim.getText().toString().trim(),txt_mota.getText().toString(),url.toString());

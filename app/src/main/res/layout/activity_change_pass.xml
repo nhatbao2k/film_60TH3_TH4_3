@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar_doipass"
+        app:title="Đổi mật khẩu"/>
+    <LinearLayout
+        android:layout_below="@+id/toolbar_doipass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_action_arraw_email"
+            android:drawablePadding="10dp"
+            android:hint="Email"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/Edit_gmail_wd"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_action_arraw_key"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:hint="Mật khẩu"
+            android:id="@+id/Edit_pwdold"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_action_arraw_key"
+            android:drawablePadding="10dp"
+            android:hint="Mật khẩu mới"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/Edit_pwd1"
+            android:inputType="textPassword"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_action_arraw_key"
+            android:drawablePadding="10dp"
+            android:hint="Mật khẩu mới"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/Edit_pwd2"
+            android:inputType="textPassword"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đổi mật khẩu"
+            android:layout_margin="10dp"
+            android:id="@+id/btn_xn_mkpw"/>
+    </LinearLayout>
+</RelativeLayout>

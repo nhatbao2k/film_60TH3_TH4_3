@@ -15,14 +15,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Filmhay"
         tools:replace="android:theme">
-        <activity android:name=".manager.report.InformationReport.InformationReportActivity"></activity>
-        <activity android:name=".manager.employeer.InformationEmployeer.InformationEmployeerActivity" />
-        <activity android:name=".manager.viewer.ChiTiet_ThanhVien" />
-        <activity android:name=".manager.viewer.QuanLyThanhVien" />
-        <activity android:name=".manager.employeer.ManagerEmployerActivity" />
+        <activity android:name=".manager.report.InformationReport.InformationReportActivity"
+            android:parentActivityName=".manager.report.ReportActivity">
+
+        </activity>
+        <activity android:name=".manager.employeer.InformationEmployeer.InformationEmployeerActivity"
+            android:parentActivityName=".manager.employeer.ManagerEmployerActivity"/>
+        <activity android:name=".manager.viewer.ChiTiet_ThanhVien"
+            android:parentActivityName=".manager.viewer.QuanLyThanhVien"/>
+        <activity android:name=".manager.viewer.QuanLyThanhVien"
+            android:parentActivityName=".manager.ManagerActivity"/>
+        <activity android:name=".manager.employeer.ManagerEmployerActivity"
+            android:parentActivityName=".manager.ManagerActivity"/>
         <activity
             android:name=".manager.Film.Add_film"
-            android:theme="@style/button" />
+            android:theme="@style/button"
+            android:parentActivityName=".manager.Film.ManagerFilmActivity"/>
         <activity android:name=".manager.ManagerActivity" />
 
         <receiver android:name=".BroadcastReceiver.NetworkChangeReciever">
@@ -47,22 +55,27 @@
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SignUp.SignUpActivity"
             android:configChanges="screenSize"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".manager.Film.ManagerFilmActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/button"></activity>
-        <activity android:name=".manager.report.ReportActivity" />
+        <activity android:name=".manager.Film.ManagerFilmActivity"
+            android:parentActivityName=".manager.ManagerActivity"/>
+        <activity android:name=".MainActivity"
+            android:theme="@style/button">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".manager.report.ReportActivity"
+            android:parentActivityName=".manager.ManagerActivity"/>
+        <activity android:name=".ChangePass.ChangePassActivity"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

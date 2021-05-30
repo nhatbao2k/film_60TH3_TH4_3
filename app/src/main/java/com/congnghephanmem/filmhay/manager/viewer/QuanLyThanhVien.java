@@ -2,6 +2,7 @@ package com.congnghephanmem.filmhay.manager.viewer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -76,5 +77,11 @@ public class QuanLyThanhVien extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_quan_ly);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Quản lý thành viên");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.congnghephanmem.filmhay.R;
@@ -51,6 +52,16 @@ public class ReportActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        returnManager();
+    }
+
+    private void returnManager() {
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_report);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Báo lỗi");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void loadData() {

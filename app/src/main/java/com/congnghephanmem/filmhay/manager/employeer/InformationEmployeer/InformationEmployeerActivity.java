@@ -2,6 +2,7 @@ package com.congnghephanmem.filmhay.manager.employeer.InformationEmployeer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
@@ -15,6 +16,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Patterns;
@@ -42,6 +44,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -106,6 +110,16 @@ public class InformationEmployeerActivity extends AppCompatActivity  {
         registerForContextMenu(img);
         //load data khi ấn vào một intent
         loadIntent();
+
+        returnEmployeerManager();
+    }
+
+    private void returnEmployeerManager() {
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_employeer);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Thông tin nhân viên");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void loadIntent() {
@@ -216,6 +230,39 @@ public class InformationEmployeerActivity extends AppCompatActivity  {
         });
     }
 
+    public int check = 0;
+    private void checkTrungPhone(){
+        mData.child("User").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, String previousChildName) {
+                User user = snapshot.getValue(User.class);
+                if (editPhone.getText().toString().equals(user.getPhone())){
+                    check = 1;
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     private void addMember() {
         if (editEmail.getText().toString().isEmpty()){
             editEmail.setError("Email chưa được nhập");
@@ -237,12 +284,57 @@ public class InformationEmployeerActivity extends AppCompatActivity  {
             editName.setError("Tên không được bỏ trống");
             return;
         }
+        String mail = editEmail.getText().toString();
+        String pass = "123321";
+        checkTrungPhone();
+        new CountDownTimer(1000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                switch (check){
+                    case 1:
+                        Toast.makeText(InformationEmployeerActivity.this, "Số điện thoại này đã được sử dụng", Toast.LENGTH_SHORT).show();
+                        check = 0;
+                        break;
+                    case 0:
+                        addUser(mail, pass);
+                        break;
+                }
+            }
+        }.start();
+
+    }
+
+
+    private void addUser(String email, String pass) {
+        mAuth.createUserWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("TAG", "createUserWithEmail:success");
+                            FirebaseUser user1 = mAuth.getCurrentUser();
+                            InsertData();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("TAG", "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(InformationEmployeerActivity.this, "Email đã được sử dụng", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void InsertData(){
         int selected = radioGroup.getCheckedRadioButtonId();
         RadioButton radioButtonGioiTinh = (RadioButton) findViewById(selected);
         String gt = radioButtonGioiTinh.getText().toString();
         String mail = editEmail.getText().toString();
         String pass = "123321";
-
         Calendar calendar = Calendar.getInstance();
         final StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://appfilm-b6b73.appspot.com/");
         StorageReference mountainRef = storageReference.child("Image_NhanVien").child("image_employeer" + calendar.getTimeInMillis() + ".png");
@@ -273,7 +365,18 @@ public class InformationEmployeerActivity extends AppCompatActivity  {
                             public void onSuccess(Uri uri) {
                                 String imageUrl = uri.toString();
                                 User user = new User(mail, editPhone.getText().toString(),editName.getText().toString(),gt,editNgaySinh.getText().toString(),"employeer", imageUrl);
-                                addUser(pass, user);
+
+
+                                mData.child("User").child(editPhone.getText().toString()).setValue(user, new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                        if (error == null){
+                                            Toast.makeText(InformationEmployeerActivity.this, "Thêm nhân viên thành công", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(InformationEmployeerActivity.this, ManagerEmployerActivity.class));
+                                            finish();
+                                        }
+                                    }
+                                });
                             }
                         });
                     }
@@ -282,33 +385,7 @@ public class InformationEmployeerActivity extends AppCompatActivity  {
         });
     }
 
-    private void addUser(String pass, User user) {
-        mAuth.createUserWithEmailAndPassword(user.getEmail(), pass)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("TAG", "createUserWithEmail:success");
-                            FirebaseUser user1 = mAuth.getCurrentUser();
-                            mData.child("User").child(user.getPhone()).setValue(user, new DatabaseReference.CompletionListener() {
-                                @Override
-                                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                                    if (error == null){
-                                        Toast.makeText(InformationEmployeerActivity.this, "Thêm nhân viên thành công", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(InformationEmployeerActivity.this, ManagerEmployerActivity.class));
-                                        finish();
-                                    }
-                                }
-                            });
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("TAG", "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(InformationEmployeerActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+
 
     private void showDateDialog(EditText editNgaySinh) {
         final Calendar calendar = Calendar.getInstance();

@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.congnghephanmem.filmhay.Model.Film;
@@ -40,8 +41,17 @@ public class ManagerFilmActivity extends AppCompatActivity {
         films = new ArrayList<>();
         reference = FirebaseDatabase.getInstance().getReference();
         get_data();
-
+        returnManager();
     }
+
+    private void returnManager() {
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Quản lý xem phim");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
     void get_data(){
         reference.child("Data_film").addChildEventListener(new ChildEventListener() {
             @Override

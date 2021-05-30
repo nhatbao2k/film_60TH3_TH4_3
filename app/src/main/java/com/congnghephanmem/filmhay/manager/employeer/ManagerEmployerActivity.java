@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.congnghephanmem.filmhay.Model.User;
@@ -64,9 +65,18 @@ public class ManagerEmployerActivity extends AppCompatActivity {
 
                 intent.putExtra("data", bundle);
                 startActivity(intent);
-                finish();
             }
         });
+
+        returnManager();
+    }
+
+    private void returnManager() {
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Quản lý nhân viên");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void loadData() {

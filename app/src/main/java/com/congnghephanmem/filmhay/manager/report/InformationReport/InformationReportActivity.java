@@ -2,6 +2,7 @@ package com.congnghephanmem.filmhay.manager.report.InformationReport;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -39,6 +40,15 @@ public class InformationReportActivity extends AppCompatActivity {
         informationReportAdapter = new InformationReportAdapter(InformationReportActivity.this, reportArrayList, R.layout.item_report_information);
         listView.setAdapter(informationReportAdapter);
         loadData();
+        returnReport();
+    }
+
+    private void returnReport() {
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_report_information);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Chi tiết lỗi");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void loadData() {

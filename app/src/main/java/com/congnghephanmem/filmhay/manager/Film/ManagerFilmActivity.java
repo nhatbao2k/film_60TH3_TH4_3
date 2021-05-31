@@ -62,7 +62,7 @@ public class ManagerFilmActivity extends AppCompatActivity {
     }
 
     void get_data(){
-        reference.child("Data_film").addChildEventListener(new ChildEventListener() {
+        reference.child("Film").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Film f = snapshot.getValue(Film.class);

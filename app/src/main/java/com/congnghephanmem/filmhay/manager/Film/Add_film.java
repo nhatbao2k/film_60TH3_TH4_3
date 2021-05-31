@@ -172,10 +172,10 @@ public class Add_film extends AppCompatActivity {
                             Film v = new Film(System.currentTimeMillis(),url_img.toString(),txt_tenphim.getText().toString().trim(),txt_mota.getText().toString(),url.toString());
 
                             if (id==0){
-                                databaseReference.child("Data_film").push().setValue(v);
+                                databaseReference.child("Film").push().setValue(v);
                                 Toast.makeText(Add_film.this,"cu",Toast.LENGTH_SHORT).show();
                             }else {
-                                databaseReference.child("Data_film").addChildEventListener(new ChildEventListener() {
+                                databaseReference.child("Film").addChildEventListener(new ChildEventListener() {
                                     @Override
                                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                                         Film f  = snapshot.getValue(Film.class);
@@ -183,7 +183,7 @@ public class Add_film extends AppCompatActivity {
                                         if (f.getId()==id){
                                             Film v1 = new Film(id,url_img.toString(),txt_tenphim.getText().toString().trim(),txt_mota.getText().toString(),url.toString());
 
-                                            databaseReference.child("Data_film").child(snapshot.getKey()).setValue(v1);
+                                            databaseReference.child("Film").child(snapshot.getKey()).setValue(v1);
                                         }
                                     }
 

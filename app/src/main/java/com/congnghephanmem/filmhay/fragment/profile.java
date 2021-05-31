@@ -110,6 +110,7 @@ public class profile extends Fragment {
                 Picasso.get().load(GetData.avatar).into(imageView);
             }
             btn_doi_mk.setVisibility(View.VISIBLE);
+            btn_out.setVisibility(View.VISIBLE);
         }
         btn_dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override

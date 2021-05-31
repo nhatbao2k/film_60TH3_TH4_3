@@ -114,7 +114,8 @@
                    android:drawablePadding="10dp"
                    android:layout_margin="10dp"
                    android:padding="10dp"
-                   android:id="@+id/btn_phim_out"/>
+                   android:id="@+id/btn_phim_out"
+                   android:visibility="gone"/>
            </LinearLayout>
 
        </RelativeLayout>

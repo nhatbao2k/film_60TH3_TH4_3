@@ -25,7 +25,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class Adapter_addfilm extends BaseAdapter {
+public class
+Adapter_addfilm extends BaseAdapter {
     Context context;
     int layout;
     List<Film> films;
@@ -79,13 +80,13 @@ public class Adapter_addfilm extends BaseAdapter {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reference.child("Data_film").addChildEventListener(new ChildEventListener() {
+                reference.child("Film").addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                         Film f  = snapshot.getValue(Film.class);
 
                         if (f.getId()==films.get(position).getId()){
-                            reference.child("Data_film").child(snapshot.getKey()).removeValue();
+                            reference.child("Film").child(snapshot.getKey()).removeValue();
                             Toast.makeText(context,"Đã Xóa",Toast.LENGTH_SHORT).show();
                         }
                     }

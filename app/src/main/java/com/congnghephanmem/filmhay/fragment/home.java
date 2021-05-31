@@ -197,7 +197,7 @@ public class home extends Fragment {
         return view;
     }
     void set_getdata_film_firebase(){
-        reference.child("Data_film").addChildEventListener(new ChildEventListener() {
+        reference.child("Film").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Film f = snapshot.getValue(Film.class);

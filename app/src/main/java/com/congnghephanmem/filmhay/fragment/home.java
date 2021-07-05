@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -203,6 +204,7 @@ public class home extends Fragment {
                 Film f = snapshot.getValue(Film.class);
                 animeHotArray.add(f);
                 recyclerAnimeAdapter.notifyDataSetChanged();
+                Collections.reverse(animeHotArray);
             }
 
             @Override

@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -117,6 +118,7 @@ public class lich_su extends Fragment implements InterfaceHistoryFilm {
                 if (historyArrayList.size() == 0){
                     Toast.makeText(getActivity(), "Bạn chưa xem bộ phim nào", Toast.LENGTH_SHORT).show();
                 }
+                Collections.reverse(historyArrayList);
             }
 
             @Override
@@ -139,6 +141,7 @@ public class lich_su extends Fragment implements InterfaceHistoryFilm {
 
             }
         });
+
         //truyen du lieu vao recycler view
         recyclerViewHistoryFilmAdapter = new RecyclerViewHistoryFilmAdapter(historyArrayList, getContext(), this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
